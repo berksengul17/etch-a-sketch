@@ -1,9 +1,17 @@
 const container = document.querySelector(".container");
 
+const range = document.querySelector("#range");
+const rangeV = document.querySelector("#rangeV");
+const setValue = () => {
+    rangeV.innerText = `${range.value} x ${range.value}`;
+}
+
+document.addEventListener("DOMContentLoaded", setValue);
+range.addEventListener("input", setValue);
+
 let mouseDown = false;
 container.onmousedown = () => (mouseDown = true);
 container.onmouseup = () => (mouseDown = false);
-
 
 function draw(e){
     if(e.type === "mouseover" && !mouseDown) return;

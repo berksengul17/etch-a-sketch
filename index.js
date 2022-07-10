@@ -1,14 +1,17 @@
 const container = document.querySelector(".container");
 
-document.body.addEventListener("click", (e) => {
-    if(e.target.className == "grid-item"){
-        e.target.style.backgroundColor = "black";
-    } 
-    else{
-        console.log("Outside grid item");
-    }
-})
+let mouseDown = false;
+container.onmousedown = () => (mouseDown = true);
+container.onmouseup = () => (mouseDown = false);
 
+
+function draw(e){
+    if(e.type === "mouseover" && !mouseDown) return;
+    console.log(mouseDown);
+    e.target.style.backgroundColor = "black";
+}
+
+// CREATE A GRID USING THE GIVEN ROWS AND COLUMNS 
 
 function createGrid(rows, cols){
     container.style.setProperty("--grid-rows", rows);
@@ -16,6 +19,8 @@ function createGrid(rows, cols){
 
     for(let i=0; i<(rows*cols); i++){
         let cell = document.createElement("div");
+        cell.addEventListener("mousedown", draw);
+        cell.addEventListener("mouseover", draw);
         container.appendChild(cell).className = "grid-item";
     }
 }

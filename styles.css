@@ -25,6 +25,7 @@ h1{
     font-weight: bold;
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 /* MAIN CONTAINER */
@@ -34,11 +35,54 @@ h1{
     justify-content: center;
 }
 
+/* SETTINGS */
+
 .settings{
+    height: 600px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    margin-right: 20px;
+}
+
+/* COLOR PICKER */
+
+.color-picker{
+    border: none;
+    width: 100px;
+    height: 100px;
+}
+
+.color-picker::-webkit-color-swatch{
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+}
+.color-picker::-webkit-color-swatch-wrapper{
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+}
+
+/* BUTTONS */
+
+button{
+    width: 150px;
+    height: 60px;
+    font-size: 20px;
+    border:none;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: #a39f9e;
+    color: white;
+}
+
+button:focus{
+    background-color: #212121;
+    color: white;
 }
 
 /* RANGE SLIDER */
@@ -48,9 +92,8 @@ h1{
     font-size: 20px;
 }
 
-input[type="range"] {
+#range{
     -webkit-appearance: none;
-    margin-right: 15px;
     width: 150px;
     height: 10px;
     background: rgba(255, 255, 255, 0.6);
@@ -60,7 +103,7 @@ input[type="range"] {
     background-repeat: no-repeat;
 }
   
-input[type="range"]::-webkit-slider-thumb {
+#range::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
     width: 20px;
@@ -71,7 +114,7 @@ input[type="range"]::-webkit-slider-thumb {
     transition: background-color .3s "ease-in-out";
 }
 
-input[type=range]::-webkit-slider-runnable-track  {
+#range::-webkit-slider-runnable-track  {
     -webkit-appearance: none;
     box-shadow: none;
     border: none;
@@ -87,7 +130,6 @@ input[type=range]::-webkit-slider-runnable-track  {
     height: 600px;
     background: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-top: 50px;
     cursor: pointer;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 1fr);

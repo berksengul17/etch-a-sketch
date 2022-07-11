@@ -34,6 +34,13 @@ h1{
     justify-content: center;
 }
 
+.settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 /* RANGE SLIDER */
 
 #rangeV{

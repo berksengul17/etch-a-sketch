@@ -35,8 +35,6 @@ function draw(e){
     e.target.style.backgroundColor = "black";
 }
 
-// Create a grid using the given row and column value 
-
 function createGrid(rows, cols){
     container.style.setProperty("--grid-rows", rows);
     container.style.setProperty("--grid-cols", cols);
@@ -49,19 +47,19 @@ function createGrid(rows, cols){
     }
 }
 
-// Clear the current grid and create a
-// new grid using the range value
-
-function createNewGrid(rangeValue){
+function clearGrid(){
     if(!mouseDown){
         let children = container.children;
         for(let i=0; i<children.length; i++){
             let child = children[i];
             child.style.backgroundColor = "white";
         }
-
-        createGrid(rangeValue, rangeValue);
     }
+}
+
+function createNewGrid(rangeValue){
+    clearGrid();
+    createGrid(rangeValue, rangeValue);
 }
 
 createGrid(16, 16);

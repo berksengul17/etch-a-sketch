@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 /* CUSTOM VARIABLES */
@@ -14,10 +15,6 @@
 html,body{
     background: #ededed;
     min-height: 100vh;
-
-    justify-content: center;
-    align-items: center;
-
 }
 
 /* TITLE */
@@ -26,7 +23,6 @@ h1{
     display: block;
     font-size: 80px;
     font-weight: bold;
-    font-family: "Roboto", sans-serif;
     text-align: center;
     margin-top: 20px;
 }
@@ -37,6 +33,44 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+/* RANGE SLIDER */
+
+#rangeV{
+    text-align: center;
+    font-size: 20px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    margin-right: 15px;
+    width: 150px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    background-image: linear-gradient(#040f0f, #040f0f);
+    background-size: 16% 100%;
+    background-repeat: no-repeat;
+}
+  
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #040f0f;
+    cursor: ew-resize;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background-color .3s "ease-in-out";
+}
+
+input[type=range]::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+  
 
 /* GRID */
 

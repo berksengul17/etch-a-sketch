@@ -1,25 +1,41 @@
 const container = document.querySelector(".container");
-
 const range = document.querySelector("#range");
 const rangeV = document.querySelector("#rangeV");
-const setValue = () => {
-    rangeV.innerText = `${range.value} x ${range.value}`;
-}
 
-document.addEventListener("DOMContentLoaded", setValue);
-range.addEventListener("input", setValue);
+document.addEventListener("DOMContentLoaded", handleInputChange);
+range.addEventListener("input", handleInputChange);
+range.addEventListener("mouseup", (e) => {
+    createNewGrid(range.value);
+});
+
+// Track mouse state
 
 let mouseDown = false;
 container.onmousedown = () => (mouseDown = true);
 container.onmouseup = () => (mouseDown = false);
 
+// UTILITY FUNCTIONS
+
+function handleInputChange(e){
+    if(e.target.type == "range"){
+        const target = e.target;
+        const min = target.min;
+        const max = target.max;
+        const val = target.value;
+    
+        target.style.backgroundSize = (val - min) * 100 / (max - min) + "100%";
+
+        rangeV.innerText = `${range.value} x ${range.value}`;
+    }
+}
+
 function draw(e){
     if(e.type === "mouseover" && !mouseDown) return;
-    console.log(mouseDown);
+
     e.target.style.backgroundColor = "black";
 }
 
-// CREATE A GRID USING THE GIVEN ROWS AND COLUMNS 
+// Create a grid using the given row and column value 
 
 function createGrid(rows, cols){
     container.style.setProperty("--grid-rows", rows);
@@ -30,6 +46,21 @@ function createGrid(rows, cols){
         cell.addEventListener("mousedown", draw);
         cell.addEventListener("mouseover", draw);
         container.appendChild(cell).className = "grid-item";
+    }
+}
+
+// Clear the current grid and create a
+// new grid using the range value
+
+function createNewGrid(rangeValue){
+    if(!mouseDown){
+        let children = container.children;
+        for(let i=0; i<children.length; i++){
+            let child = children[i];
+            child.style.backgroundColor = "white";
+        }
+
+        createGrid(rangeValue, rangeValue);
     }
 }
 

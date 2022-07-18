@@ -80,7 +80,7 @@ button:hover{
     color: white;
 }
 
-button:focus{
+button.active, button:active{
     background-color: #212121;
     color: white;
 }
